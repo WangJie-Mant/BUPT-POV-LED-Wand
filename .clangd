@@ -1,0 +1,6 @@
+Diagnostics:
+  Suppress:
+    - unknown_typename
+    - invalid_token_after_toplevel_declarator
+    - redefinition_different_typedef
+    - fatal_too_many_errors
