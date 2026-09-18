@@ -1,6 +1,6 @@
-#include "key.h"
-#include "./Public/Debug.H"
 #include "CH552.H"
+#include "./Public/Debug.H"
+#include "key.h"
 #include "GPIO.H"
 
 void Key_Init() {

@@ -16,8 +16,9 @@
 * microcontroller manufactured by Nanjing Qinheng Microelectronics.
 ********************************************************************************/
 
-#include "..\Public\CH554.H"                                                          //调试信息打印
-#include "..\Public\Debug.H"
+
+#include "Public\CH554.H"                                                          //调试信息打印
+#include "Public\Debug.H"
 #include "SPI.H" 
 
 #pragma  NOAREGS
@@ -134,7 +135,11 @@ UINT8 CH554SPISlvRead()
 * Function Name  : SPIInterrupt(void)
 * Description    : SPI 中断服务程序
 *******************************************************************************/
-void	SPIInterrupt( void ) interrupt INT_NO_SPI0 using 1                       //SPI中断服务程序,使用寄存器组1
+#ifdef __SDCC
+void	SPIInterrupt( void ) __interrupt(INT_NO_SPI0) __using(1)
+#else
+void	SPIInterrupt( void ) interrupt INT_NO_SPI0 using 1
+#endif
 { 
 }
 #endif

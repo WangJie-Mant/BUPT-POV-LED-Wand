@@ -1,0 +1,1 @@
+//#define FREQ_SYS 6000000

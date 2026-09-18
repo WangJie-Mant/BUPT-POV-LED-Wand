@@ -1,10 +1,21 @@
+;/*--------------------------------------------------------------------------
+;CH554.INC
+;Header file for CH554 microcontrollers.
+;****************************************
+;**  Copyright  (C)  W.ch  1999-2014   **
+;**  Web:              http://wch.cn   **
+;****************************************
+;--------------------------------------------------------------------------*/
 
-#ifndef __CH552_H__
-#define __CH552_H__
+$SAVE
+$NOLIST
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+// 3 blocks: __BASE_TYPE__, __CH554_H__, __USB_DEF__
+
+#ifndef __BASE_TYPE__
+#define __BASE_TYPE__
+
+/*----- constant and type define -----------------------------------------*/
 
 #ifndef TRUE
 #define TRUE    1
@@ -14,111 +25,11 @@ extern "C" {
 #define NULL    0
 #endif
 
-#ifndef INT16
-typedef signed short											INT16;
-#endif
-	
-#ifndef BOOL
-typedef bit                             BOOL;
-#endif
-#ifndef UINT8
-typedef unsigned char                   UINT8;
-#endif
-#ifndef UINT16
-typedef unsigned short                  UINT16;
-#endif
-#ifndef UINT32
-typedef unsigned long                   UINT32;
-#endif
-#ifndef UINT8D
-typedef unsigned char  data             UINT8D;
-#endif
-#ifndef UINT16D
-typedef unsigned short data             UINT16D;
-#endif
-#ifndef UINT32D
-typedef unsigned long  data             UINT32D;
-#endif
-#ifndef UINT8I
-typedef unsigned char  idata            UINT8I;
-#endif
-#ifndef UINT16I
-typedef unsigned short idata            UINT16I;
-#endif
-#ifndef UINT32I
-typedef unsigned long  idata            UINT32I;
-#endif
-#ifndef UINT8X
-typedef unsigned char  xdata            UINT8X;
-#endif
-#ifndef UINT16X
-typedef unsigned short xdata            UINT16X;
-#endif
-#ifndef UINT32X
-typedef unsigned long  xdata            UINT32X;
-#endif
-#ifndef UINT8V
-typedef unsigned char volatile          UINT8V;
-#endif
-#ifndef UINT8DV
-typedef unsigned char volatile data     UINT8DV;
-#endif
-#ifndef UINT8XV
-typedef unsigned char volatile xdata    UINT8XV;
-#endif
-#ifndef UINT8PV
-typedef unsigned char volatile pdata    UINT8PV;
-#endif
-#ifndef UINT8C
-typedef const unsigned char code        UINT8C;
-#endif
-#ifndef PUINT8
-typedef unsigned char                 *PUINT8;
-#endif
-#ifndef PUINT16
-typedef unsigned short                *PUINT16;
-#endif
-#ifndef PUINT32
-typedef unsigned long                 *PUINT32;
-#endif
-#ifndef PUINT8I
-typedef unsigned char  idata          *PUINT8I;
-#endif
-#ifndef PUINT16I
-typedef unsigned short idata          *PUINT16I;
-#endif
-#ifndef PUINT32I
-typedef unsigned long  idata          *PUINT32I;
-#endif
-#ifndef PUINT8X
-typedef unsigned char  xdata          *PUINT8X;
-#endif
-#ifndef PUINT16X
-typedef unsigned short xdata          *PUINT16X;
-#endif
-#ifndef PUINT32X
-typedef unsigned long  xdata          *PUINT32X;
-#endif
-#ifndef PUINT8V
-typedef unsigned char volatile        *PUINT8V;
-#endif
-#ifndef PUINT8DV
-typedef unsigned char volatile data   *PUINT8DV;
-#endif
-#ifndef PUINT8XV
-typedef unsigned char volatile xdata  *PUINT8XV;
-#endif
-#ifndef PUINT8PV
-typedef unsigned char volatile pdata  *PUINT8PV;
-#endif
-#ifndef PUINT8C
-typedef const unsigned char code      *PUINT8C;
-#endif
+#endif  // __BASE_TYPE__
 
-#ifndef STRUCT_OFFSET
-#define STRUCT_OFFSET( s, m )       ( (UINT8)( & (((s) *)0) -> (m) ) )  /* get the offset address for a member of a structure */
-#endif
-	
+#ifndef __CH554_H__
+#define __CH554_H__
+
 /*----- SFR --------------------------------------------------------------*/
 /*  sbit are bit addressable, others are byte addressable */
 
@@ -279,15 +190,14 @@ sfr ROM_CTRL        = 0x86;         // WriteOnly: flash-ROM control
 
 /*  Port Registers  */
 sfr P1              = 0x90;         // port 1 input & output
- sbit P1_0          = P1^0;         //P1.0
- sbit P1_1          = P1^1;         //P1.1
- sbit P1_2          = P1^2;         //P1.2
- sbit P1_3          = P1^3;         //P1.3
- sbit P1_4          = P1^4;         //P1.4
- sbit P1_5          = P1^5;         //P1.5
- sbit P1_6          = P1^6;         //P1.6
- sbit P1_7          = P1^7;         //P1.7
- 
+ sbit P1_7          = P1^7;
+ sbit P1_6          = P1^6;
+ sbit P1_5          = P1^5;
+ sbit P1_4          = P1^4;
+ sbit P1_3          = P1^3;
+ sbit P1_2          = P1^2;
+ sbit P1_1          = P1^1;
+ sbit P1_0          = P1^0;
  sbit SCK           = P1^7;         // serial clock for SPI0
  sbit TXD1          = P1^7;         // TXD output for UART1
  sbit TIN5          = P1^7;         // TIN5 for Touch-Key
@@ -345,15 +255,14 @@ sfr P1_DIR_PU       = 0x93;         // port 1 direction for push-pull or pullup 
 #define bCAP1             bT2       // capture1 input for timer2
 sfr P2              = 0xA0;         // port 2
 sfr P3              = 0xB0;         // port 3 input & output
- sbit P3_0          = P3^0;         //P3.0
- sbit P3_1          = P3^1;         //P3.1
- sbit P3_2          = P3^2;         //P3.2
- sbit P3_3          = P3^3;         //P3.3
- sbit P3_4          = P3^4;         //P3.4
- sbit P3_5          = P3^5;         //P3.5
- sbit P3_6          = P3^6;         //P3.6
- sbit P3_7          = P3^7;         //P3.7
- 
+ sbit P3_7          = P3^7;
+ sbit P3_6          = P3^6;
+ sbit P3_5          = P3^5;
+ sbit P3_4          = P3^4;
+ sbit P3_3          = P3^3;
+ sbit P3_2          = P3^2;
+ sbit P3_1          = P3^1;
+ sbit P3_0          = P3^0;
  sbit UDM           = P3^7;         // ReadOnly: pin UDM input
  sbit UDP           = P3^6;         // ReadOnly: pin UDP input
  sbit T1            = P3^5;         // external count input for timer1
@@ -394,7 +303,7 @@ sfr PIN_FUNC        = 0xC6;         // pin function selection
 #define bPWM2_PIN_X       0x08      // PWM2 alternate pin enable: 0=PWM2 on P3.4, 1=PWM2 on P3.1
 #define bPWM1_PIN_X       0x04      // PWM1 alternate pin enable: 0=PWM1 on P1.5, 1=PWM1 on P3.0
 #define bT2EX_PIN_X       0x02      // T2EX/CAP2 alternate pin enable: 0=T2EX/CAP2 on P1.1, 1=T2EX/CAP2 on RST
-#define bT2_PIN_X         0x01      // T2/CAP1 alternate pin enable: 0=T2/CAP1 on P1.1, 1=T2/CAP1 on P1.4
+#define bT2_PIN_X         0x01      // T2/CAP1 alternate pin enable: 0=T2/CAP1 on P1.0, 1=T2/CAP1 on P1.4
 sfr XBUS_AUX        = 0xA2;         // xBUS auxiliary setting
 #define bUART0_TX         0x80      // ReadOnly: indicate UART0 transmittal status
 #define bUART0_RX         0x40      // ReadOnly: indicate UART0 receiving status
@@ -589,7 +498,7 @@ sfr TKEY_DATL       = 0xC4;         // ReadOnly: low byte of touch-key data
 sfr TKEY_DATH       = 0xC5;         // ReadOnly: high byte of touch-key data
 #define bTKD_CHG          0x80      // ReadOnly: indicate control changed, current data maybe invalid
 
-/*  USB Device Registers  */
+/*  USB/Host/Device Registers  */
 sfr USB_C_CTRL      = 0x91;         // USB type-C control
 #define bVBUS2_PD_EN      0x80      // USB VBUS2 10K pulldown resistance: 0=disable, 1=enable pullup
 #define bUCC2_PD_EN       0x40      // USB CC2 5.1K pulldown resistance: 0=disable, 1=enable pulldown
@@ -611,6 +520,14 @@ sfr UDEV_CTRL       = 0xD1;         // USB device physical port control
 #define bUD_LOW_SPEED     0x04      // enable USB physical port low speed: 0=full speed, 1=low speed
 #define bUD_GP_BIT        0x02      // general purpose bit
 #define bUD_PORT_EN       0x01      // enable USB physical port I/O: 0=disable, 1=enable
+//sfr UHOST_CTRL      = 0xD1;         // USB host physical port control
+#define UHOST_CTRL        UDEV_CTRL
+#define bUH_PD_DIS        0x80      // disable USB UDP/UDM pulldown resistance: 0=enable pulldown, 1=disable
+#define bUH_DP_PIN        0x20      // ReadOnly: indicate current UDP pin level
+#define bUH_DM_PIN        0x10      // ReadOnly: indicate current UDM pin level
+#define bUH_LOW_SPEED     0x04      // enable USB port low speed: 0=full speed, 1=low speed
+#define bUH_BUS_RESET     0x02      // control USB bus reset: 0=normal, 1=force bus reset
+#define bUH_PORT_EN       0x01      // enable USB port: 0=disable, 1=enable port, automatic disabled if USB device detached
 sfr UEP1_CTRL       = 0xD2;         // endpoint 1 control
 #define bUEP_R_TOG        0x80      // expected data toggle flag of USB endpoint X receiving (OUT): 0=DATA0, 1=DATA1
 #define bUEP_T_TOG        0x40      // prepared data toggle flag of USB endpoint X transmittal (IN): 0=DATA0, 1=DATA1
@@ -649,53 +566,67 @@ sfr USB_INT_FG      = 0xD8;         // USB interrupt flag
  sbit U_TOG_OK      = USB_INT_FG^6; // ReadOnly: indicate current USB transfer toggle is OK
  sbit U_SIE_FREE    = USB_INT_FG^5; // ReadOnly: indicate USB SIE free status
  sbit UIF_FIFO_OV   = USB_INT_FG^4; // FIFO overflow interrupt flag for USB, direct bit address clear or write 1 to clear
+ sbit UIF_HST_SOF   = USB_INT_FG^3; // host SOF timer interrupt flag for USB host, direct bit address clear or write 1 to clear
  sbit UIF_SUSPEND   = USB_INT_FG^2; // USB suspend or resume event interrupt flag, direct bit address clear or write 1 to clear
  sbit UIF_TRANSFER  = USB_INT_FG^1; // USB transfer completion interrupt flag, direct bit address clear or write 1 to clear
- sbit UIF_BUS_RST   = USB_INT_FG^0; // bus reset event interrupt flag, direct bit address clear or write 1 to clear
+ sbit UIF_DETECT    = USB_INT_FG^0; // device detected event interrupt flag for USB host mode, direct bit address clear or write 1 to clear
+ sbit UIF_BUS_RST   = USB_INT_FG^0; // bus reset event interrupt flag for USB device mode, direct bit address clear or write 1 to clear
 sfr USB_INT_ST      = 0xD9;         // ReadOnly: USB interrupt status
-#define bUIS_IS_NAK       0x80      // ReadOnly: indicate current USB transfer is NAK received
+#define bUIS_IS_NAK       0x80      // ReadOnly: indicate current USB transfer is NAK received for USB device mode
 #define bUIS_TOG_OK       0x40      // ReadOnly: indicate current USB transfer toggle is OK
-#define bUIS_TOKEN1       0x20      // ReadOnly: current token PID code bit 1 received
-#define bUIS_TOKEN0       0x10      // ReadOnly: current token PID code bit 0 received
-#define MASK_UIS_TOKEN    0x30      // ReadOnly: bit mask of current token PID code received
+#define bUIS_TOKEN1       0x20      // ReadOnly: current token PID code bit 1 received for USB device mode
+#define bUIS_TOKEN0       0x10      // ReadOnly: current token PID code bit 0 received for USB device mode
+#define MASK_UIS_TOKEN    0x30      // ReadOnly: bit mask of current token PID code received for USB device mode
 #define UIS_TOKEN_OUT     0x00
 #define UIS_TOKEN_SOF     0x10
 #define UIS_TOKEN_IN      0x20
 #define UIS_TOKEN_SETUP   0x30
-// bUIS_TOKEN1 & bUIS_TOKEN0: current token PID code received
+// bUIS_TOKEN1 & bUIS_TOKEN0: current token PID code received for USB device mode
 //   00: OUT token PID received
 //   01: SOF token PID received
 //   10: IN token PID received
 //   11: SETUP token PID received
-#define MASK_UIS_ENDP     0x0F      // ReadOnly: bit mask of current transfer endpoint number
+#define MASK_UIS_ENDP     0x0F      // ReadOnly: bit mask of current transfer endpoint number for USB device mode
+#define MASK_UIS_H_RES    0x0F      // ReadOnly: bit mask of current transfer handshake response for USB host mode: 0000=no response, time out from device, others=handshake response PID received
 sfr USB_MIS_ST      = 0xDA;         // ReadOnly: USB miscellaneous status
+#define bUMS_SOF_PRES     0x80      // ReadOnly: indicate host SOF timer presage status
+#define bUMS_SOF_ACT      0x40      // ReadOnly: indicate host SOF timer action status for USB host
 #define bUMS_SIE_FREE     0x20      // ReadOnly: indicate USB SIE free status
 #define bUMS_R_FIFO_RDY   0x10      // ReadOnly: indicate USB receiving FIFO ready status (not empty)
 #define bUMS_BUS_RESET    0x08      // ReadOnly: indicate USB bus reset status
 #define bUMS_SUSPEND      0x04      // ReadOnly: indicate USB suspend status
+#define bUMS_DM_LEVEL     0x02      // ReadOnly: indicate UDM level saved at device attached to USB host
+#define bUMS_DEV_ATTACH   0x01      // ReadOnly: indicate device attached status on USB host
 sfr USB_RX_LEN      = 0xDB;         // ReadOnly: USB receiving length
 sfr UEP0_CTRL       = 0xDC;         // endpoint 0 control
 sfr UEP0_T_LEN      = 0xDD;         // endpoint 0 transmittal length
 sfr UEP4_CTRL       = 0xDE;         // endpoint 4 control
 sfr UEP4_T_LEN      = 0xDF;         // endpoint 4 transmittal length
 sfr USB_INT_EN      = 0xE1;         // USB interrupt enable
-#define bUIE_DEV_SOF      0x80      // enable interrupt for SOF received
-#define bUIE_DEV_NAK      0x40      // enable interrupt for NAK responded
+#define bUIE_DEV_SOF      0x80      // enable interrupt for SOF received for USB device mode
+#define bUIE_DEV_NAK      0x40      // enable interrupt for NAK responded for USB device mode
 #define bUIE_FIFO_OV      0x10      // enable interrupt for FIFO overflow
+#define bUIE_HST_SOF      0x08      // enable interrupt for host SOF timer action for USB host mode
 #define bUIE_SUSPEND      0x04      // enable interrupt for USB suspend or resume event
 #define bUIE_TRANSFER     0x02      // enable interrupt for USB transfer completion
-#define bUIE_BUS_RST      0x01      // enable interrupt for USB bus reset event
+#define bUIE_DETECT       0x01      // enable interrupt for USB device detected event for USB host mode
+#define bUIE_BUS_RST      0x01      // enable interrupt for USB bus reset event for USB device mode
 sfr USB_CTRL        = 0xE2;         // USB base control
+#define bUC_HOST_MODE     0x80      // enable USB host mode: 0=device mode, 1=host mode
 #define bUC_LOW_SPEED     0x40      // enable USB low speed: 0=full speed, 1=low speed
 #define bUC_DEV_PU_EN     0x20      // USB device enable and internal pullup resistance enable
 #define bUC_SYS_CTRL1     0x20      // USB system control high bit
 #define bUC_SYS_CTRL0     0x10      // USB system control low bit
 #define MASK_UC_SYS_CTRL  0x30      // bit mask of USB system control
-// bUC_SYS_CTRL1 & bUC_SYS_CTRL0: USB system control
-//   00: disable USB device and disable internal pullup resistance
-//   01: enable USB device and disable internal pullup resistance, need external pullup resistance
-//   1x: enable USB device and enable internal pullup resistance
-#define bUC_INT_BUSY      0x08      // enable automatic responding busy during interrupt flag UIF_TRANSFER valid
+// bUC_HOST_MODE & bUC_SYS_CTRL1 & bUC_SYS_CTRL0: USB system control
+//   0 00: disable USB device and disable internal pullup resistance
+//   0 01: enable USB device and disable internal pullup resistance, need external pullup resistance
+//   0 1x: enable USB device and enable internal pullup resistance
+//   1 00: enable USB host and normal status
+//   1 01: enable USB host and force UDP/UDM output SE0 state
+//   1 10: enable USB host and force UDP/UDM output J state
+//   1 11: enable USB host and force UDP/UDM output resume or K state
+#define bUC_INT_BUSY      0x08      // enable automatic responding busy for device mode or automatic pause for host mode during interrupt flag UIF_TRANSFER valid
 #define bUC_RESET_SIE     0x04      // force reset USB SIE, need software clear
 #define bUC_CLR_ALL       0x02      // force clear FIFO and count of USB
 #define bUC_DMA_EN        0x01      // DMA enable and DMA interrupt enable for USB
@@ -741,14 +672,59 @@ sfr UEP0_DMA_H      = 0xED;         // endpoint 0 buffer start address high byte
 sfr16 UEP1_DMA      = 0xEE;         // endpoint 1 buffer start address, little-endian
 sfr UEP1_DMA_L      = 0xEE;         // endpoint 1 buffer start address low byte
 sfr UEP1_DMA_H      = 0xEF;         // endpoint 1 buffer start address high byte
+//sfr UH_SETUP        = 0xD2;         // host aux setup
+#define UH_SETUP          UEP1_CTRL
+#define bUH_PRE_PID_EN    0x80      // USB host PRE PID enable for low speed device via hub
+#define bUH_SOF_EN        0x40      // USB host automatic SOF enable
+//sfr UH_RX_CTRL      = 0xD4;         // host receiver endpoint control
+#define UH_RX_CTRL        UEP2_CTRL
+#define bUH_R_TOG         0x80      // expected data toggle flag of host receiving (IN): 0=DATA0, 1=DATA1
+#define bUH_R_AUTO_TOG    0x10      // enable automatic toggle after successful transfer completion: 0=manual toggle, 1=automatic toggle
+#define bUH_R_RES         0x04      // prepared handshake response type for host receiving (IN): 0=ACK (ready), 1=no response, time out to device, for isochronous transactions
+//sfr UH_EP_PID       = 0xD5;         // host endpoint and token PID, lower 4 bits for endpoint number, upper 4 bits for token PID
+#define UH_EP_PID         UEP2_T_LEN
+#define MASK_UH_TOKEN     0xF0      // bit mask of token PID for USB host transfer
+#define MASK_UH_ENDP      0x0F      // bit mask of endpoint number for USB host transfer
+//sfr UH_TX_CTRL      = 0xD6;         // host transmittal endpoint control
+#define UH_TX_CTRL        UEP3_CTRL
+#define bUH_T_TOG         0x40      // prepared data toggle flag of host transmittal (SETUP/OUT): 0=DATA0, 1=DATA1
+#define bUH_T_AUTO_TOG    0x10      // enable automatic toggle after successful transfer completion: 0=manual toggle, 1=automatic toggle
+#define bUH_T_RES         0x01      // expected handshake response type for host transmittal (SETUP/OUT): 0=ACK (ready), 1=no response, time out from device, for isochronous transactions
+//sfr UH_TX_LEN       = 0xD7;         // host transmittal endpoint transmittal length
+#define UH_TX_LEN         UEP3_T_LEN
+//sfr UH_EP_MOD       = 0xEB;         // host endpoint mode
+#define UH_EP_MOD         UEP2_3_MOD
+#define bUH_EP_TX_EN      0x40      // enable USB host OUT endpoint transmittal
+#define bUH_EP_TBUF_MOD   0x10      // buffer mode of USB host OUT endpoint
+// bUH_EP_TX_EN & bUH_EP_TBUF_MOD: USB host OUT endpoint buffer mode, buffer start address is UH_TX_DMA
+//   0 x:  disable endpoint and disable buffer
+//   1 0:  64 bytes buffer for transmittal (OUT endpoint)
+//   1 1:  dual 64 bytes buffer by toggle bit bUH_T_TOG selection for transmittal (OUT endpoint), total=128bytes
+#define bUH_EP_RX_EN      0x08      // enable USB host IN endpoint receiving
+#define bUH_EP_RBUF_MOD   0x01      // buffer mode of USB host IN endpoint
+// bUH_EP_RX_EN & bUH_EP_RBUF_MOD: USB host IN endpoint buffer mode, buffer start address is UH_RX_DMA
+//   0 x:  disable endpoint and disable buffer
+//   1 0:  64 bytes buffer for receiving (IN endpoint)
+//   1 1:  dual 64 bytes buffer by toggle bit bUH_R_TOG selection for receiving (IN endpoint), total=128bytes
+//sfr16 UH_RX_DMA     = 0xE4;         // host rx endpoint buffer start address, little-endian
+#define UH_RX_DMA         UEP2_DMA
+//sfr UH_RX_DMA_L     = 0xE4;         // host rx endpoint buffer start address low byte
+#define UH_RX_DMA_L       UEP2_DMA_L
+//sfr UH_RX_DMA_H     = 0xE5;         // host rx endpoint buffer start address high byte
+#define UH_RX_DMA_H       UEP2_DMA_H
+//sfr16 UH_TX_DMA     = 0xE6;         // host tx endpoint buffer start address, little-endian
+#define UH_TX_DMA         UEP3_DMA
+//sfr UH_TX_DMA_L     = 0xE6;         // host tx endpoint buffer start address low byte
+#define UH_TX_DMA_L       UEP3_DMA_L
+//sfr UH_TX_DMA_H     = 0xE7;         // host tx endpoint buffer start address high byte
+#define UH_TX_DMA_H       UEP3_DMA_H
 
 /*----- XDATA: xRAM ------------------------------------------*/
 
 #define XDATA_RAM_SIZE    0x0400    // size of expanded xRAM, xdata SRAM embedded chip
 
 /*----- Reference Information --------------------------------------------*/
-#define ID_CH552          0x52      // chip ID
-#define ID_CH551          0x51      // chip ID
+#define ID_CH554          0x54      // chip ID
 
 /* Interrupt routine address and interrupt number */
 #define INT_ADDR_INT0     0x0003    // interrupt vector address for INT0
@@ -807,9 +783,335 @@ ASM example:
        DJNZ R7,LOOP
 */
 
-#ifdef __cplusplus
-}
+#endif  // __CH554_H__
+
+#ifndef __USB_DEF__
+#define __USB_DEF__
+
+/*----- USB constant and structure define --------------------------------*/
+
+/* USB PID */
+#ifndef USB_PID_SETUP
+#define USB_PID_NULL            0x00    /* reserved PID */
+#define USB_PID_SOF             0x05
+#define USB_PID_SETUP           0x0D
+#define USB_PID_IN              0x09
+#define USB_PID_OUT             0x01
+#define USB_PID_ACK             0x02
+#define USB_PID_NAK             0x0A
+#define USB_PID_STALL           0x0E
+#define USB_PID_DATA0           0x03
+#define USB_PID_DATA1           0x0B
+#define USB_PID_PRE             0x0C
 #endif
 
-#endif  // __CH552_H__
+/* USB standard device request code */
+#ifndef USB_GET_DESCRIPTOR
+#define USB_GET_STATUS          0x00
+#define USB_CLEAR_FEATURE       0x01
+#define USB_SET_FEATURE         0x03
+#define USB_SET_ADDRESS         0x05
+#define USB_GET_DESCRIPTOR      0x06
+#define USB_SET_DESCRIPTOR      0x07
+#define USB_GET_CONFIGURATION   0x08
+#define USB_SET_CONFIGURATION   0x09
+#define USB_GET_INTERFACE       0x0A
+#define USB_SET_INTERFACE       0x0B
+#define USB_SYNCH_FRAME         0x0C
+#endif
 
+/* USB hub class request code */
+#ifndef HUB_GET_DESCRIPTOR
+#define HUB_GET_STATUS          0x00
+#define HUB_CLEAR_FEATURE       0x01
+#define HUB_GET_STATE           0x02
+#define HUB_SET_FEATURE         0x03
+#define HUB_GET_DESCRIPTOR      0x06
+#define HUB_SET_DESCRIPTOR      0x07
+#endif
+
+/* USB HID class request code */
+#ifndef HID_GET_REPORT
+#define HID_GET_REPORT          0x01
+#define HID_GET_IDLE            0x02
+#define HID_GET_PROTOCOL        0x03
+#define HID_SET_REPORT          0x09
+#define HID_SET_IDLE            0x0A
+#define HID_SET_PROTOCOL        0x0B
+#endif
+
+/* Bit define for USB request type */
+#ifndef USB_REQ_TYP_MASK
+#define USB_REQ_TYP_IN          0x80            /* control IN, device to host */
+#define USB_REQ_TYP_OUT         0x00            /* control OUT, host to device */
+#define USB_REQ_TYP_READ        0x80            /* control read, device to host */
+#define USB_REQ_TYP_WRITE       0x00            /* control write, host to device */
+#define USB_REQ_TYP_MASK        0x60            /* bit mask of request type */
+#define USB_REQ_TYP_STANDARD    0x00
+#define USB_REQ_TYP_CLASS       0x20
+#define USB_REQ_TYP_VENDOR      0x40
+#define USB_REQ_TYP_RESERVED    0x60
+#define USB_REQ_RECIP_MASK      0x1F            /* bit mask of request recipient */
+#define USB_REQ_RECIP_DEVICE    0x00
+#define USB_REQ_RECIP_INTERF    0x01
+#define USB_REQ_RECIP_ENDP      0x02
+#define USB_REQ_RECIP_OTHER     0x03
+#endif
+
+/* USB request type for hub class request */
+#ifndef HUB_GET_HUB_DESCRIPTOR
+#define HUB_CLEAR_HUB_FEATURE   0x20
+#define HUB_CLEAR_PORT_FEATURE  0x23
+#define HUB_GET_BUS_STATE       0xA3
+#define HUB_GET_HUB_DESCRIPTOR  0xA0
+#define HUB_GET_HUB_STATUS      0xA0
+#define HUB_GET_PORT_STATUS     0xA3
+#define HUB_SET_HUB_DESCRIPTOR  0x20
+#define HUB_SET_HUB_FEATURE     0x20
+#define HUB_SET_PORT_FEATURE    0x23
+#endif
+
+/* Hub class feature selectors */
+#ifndef HUB_PORT_RESET
+#define HUB_C_HUB_LOCAL_POWER   0
+#define HUB_C_HUB_OVER_CURRENT  1
+#define HUB_PORT_CONNECTION     0
+#define HUB_PORT_ENABLE         1
+#define HUB_PORT_SUSPEND        2
+#define HUB_PORT_OVER_CURRENT   3
+#define HUB_PORT_RESET          4
+#define HUB_PORT_POWER          8
+#define HUB_PORT_LOW_SPEED      9
+#define HUB_C_PORT_CONNECTION   16
+#define HUB_C_PORT_ENABLE       17
+#define HUB_C_PORT_SUSPEND      18
+#define HUB_C_PORT_OVER_CURRENT 19
+#define HUB_C_PORT_RESET        20
+#endif
+
+/* USB descriptor type */
+#ifndef USB_DESCR_TYP_DEVICE
+#define USB_DESCR_TYP_DEVICE    0x01
+#define USB_DESCR_TYP_CONFIG    0x02
+#define USB_DESCR_TYP_STRING    0x03
+#define USB_DESCR_TYP_INTERF    0x04
+#define USB_DESCR_TYP_ENDP      0x05
+#define USB_DESCR_TYP_QUALIF    0x06
+#define USB_DESCR_TYP_SPEED     0x07
+#define USB_DESCR_TYP_OTG       0x09
+#define USB_DESCR_TYP_HID       0x21
+#define USB_DESCR_TYP_REPORT    0x22
+#define USB_DESCR_TYP_PHYSIC    0x23
+#define USB_DESCR_TYP_CS_INTF   0x24
+#define USB_DESCR_TYP_CS_ENDP   0x25
+#define USB_DESCR_TYP_HUB       0x29
+#endif
+
+/* USB device class */
+#ifndef USB_DEV_CLASS_HUB
+#define USB_DEV_CLASS_RESERVED  0x00
+#define USB_DEV_CLASS_AUDIO     0x01
+#define USB_DEV_CLASS_COMMUNIC  0x02
+#define USB_DEV_CLASS_HID       0x03
+#define USB_DEV_CLASS_MONITOR   0x04
+#define USB_DEV_CLASS_PHYSIC_IF 0x05
+#define USB_DEV_CLASS_POWER     0x06
+#define USB_DEV_CLASS_PRINTER   0x07
+#define USB_DEV_CLASS_STORAGE   0x08
+#define USB_DEV_CLASS_HUB       0x09
+#define USB_DEV_CLASS_VEN_SPEC  0xFF
+#endif
+
+/* USB endpoint type and attributes */
+#ifndef USB_ENDP_TYPE_MASK
+#define USB_ENDP_DIR_MASK       0x80
+#define USB_ENDP_ADDR_MASK      0x0F
+#define USB_ENDP_TYPE_MASK      0x03
+#define USB_ENDP_TYPE_CTRL      0x00
+#define USB_ENDP_TYPE_ISOCH     0x01
+#define USB_ENDP_TYPE_BULK      0x02
+#define USB_ENDP_TYPE_INTER     0x03
+#endif
+
+#ifndef USB_DEVICE_ADDR
+#define	USB_DEVICE_ADDR			0x02	/* 默认的USB设备地址 */
+#endif
+#ifndef DEFAULT_ENDP0_SIZE
+#define DEFAULT_ENDP0_SIZE      8       /* default maximum packet size for endpoint 0 */
+#endif
+#ifndef MAX_PACKET_SIZE
+#define MAX_PACKET_SIZE         64      /* maximum packet size */
+#endif
+#ifndef USB_BO_CBW_SIZE
+#define USB_BO_CBW_SIZE			0x1F	/* 命令块CBW的总长度 */
+#define USB_BO_CSW_SIZE			0x0D	/* 命令状态块CSW的总长度 */
+#endif
+#ifndef USB_BO_CBW_SIG0
+#define USB_BO_CBW_SIG0         0x55    /* 命令块CBW识别标志'USBC' */
+#define USB_BO_CBW_SIG1         0x53
+#define USB_BO_CBW_SIG2         0x42
+#define USB_BO_CBW_SIG3         0x43
+#define USB_BO_CSW_SIG0         0x55    /* 命令状态块CSW识别标志'USBS' */
+#define USB_BO_CSW_SIG1         0x53
+#define USB_BO_CSW_SIG2         0x42
+#define USB_BO_CSW_SIG3         0x53
+#endif
+
+#if 0
+
+typedef struct _USB_SETUP_REQ {
+    UINT8 bRequestType;
+    UINT8 bRequest;
+    UINT8 wValueL;
+    UINT8 wValueH;
+    UINT8 wIndexL;
+    UINT8 wIndexH;
+    UINT8 wLengthL;
+    UINT8 wLengthH;
+} USB_SETUP_REQ, *PUSB_SETUP_REQ;
+
+typedef USB_SETUP_REQ xdata *PXUSB_SETUP_REQ;
+
+typedef struct _USB_DEVICE_DESCR {
+    UINT8 bLength;
+    UINT8 bDescriptorType;
+    UINT8 bcdUSBL;
+    UINT8 bcdUSBH;
+    UINT8 bDeviceClass;
+    UINT8 bDeviceSubClass;
+    UINT8 bDeviceProtocol;
+    UINT8 bMaxPacketSize0;
+    UINT8 idVendorL;
+    UINT8 idVendorH;
+    UINT8 idProductL;
+    UINT8 idProductH;
+    UINT8 bcdDeviceL;
+    UINT8 bcdDeviceH;
+    UINT8 iManufacturer;
+    UINT8 iProduct;
+    UINT8 iSerialNumber;
+    UINT8 bNumConfigurations;
+} USB_DEV_DESCR, *PUSB_DEV_DESCR;
+
+typedef USB_DEV_DESCR xdata *PXUSB_DEV_DESCR;
+
+typedef struct _USB_CONFIG_DESCR {
+    UINT8 bLength;
+    UINT8 bDescriptorType;
+    UINT8 wTotalLengthL;
+    UINT8 wTotalLengthH;
+    UINT8 bNumInterfaces;
+    UINT8 bConfigurationValue;
+    UINT8 iConfiguration;
+    UINT8 bmAttributes;
+    UINT8 MaxPower;
+} USB_CFG_DESCR, *PUSB_CFG_DESCR;
+
+typedef USB_CFG_DESCR xdata *PXUSB_CFG_DESCR;
+
+typedef struct _USB_INTERF_DESCR {
+    UINT8 bLength;
+    UINT8 bDescriptorType;
+    UINT8 bInterfaceNumber;
+    UINT8 bAlternateSetting;
+    UINT8 bNumEndpoints;
+    UINT8 bInterfaceClass;
+    UINT8 bInterfaceSubClass;
+    UINT8 bInterfaceProtocol;
+    UINT8 iInterface;
+} USB_ITF_DESCR, *PUSB_ITF_DESCR;
+
+typedef USB_ITF_DESCR xdata *PXUSB_ITF_DESCR;
+
+typedef struct _USB_ENDPOINT_DESCR {
+    UINT8 bLength;
+    UINT8 bDescriptorType;
+    UINT8 bEndpointAddress;
+    UINT8 bmAttributes;
+    UINT8 wMaxPacketSizeL;
+    UINT8 wMaxPacketSizeH;
+    UINT8 bInterval;
+} USB_ENDP_DESCR, *PUSB_ENDP_DESCR;
+
+typedef USB_ENDP_DESCR xdata *PXUSB_ENDP_DESCR;
+
+typedef struct _USB_CONFIG_DESCR_LONG {
+    USB_CFG_DESCR   cfg_descr;
+    USB_ITF_DESCR   itf_descr;
+    USB_ENDP_DESCR  endp_descr[1];
+} USB_CFG_DESCR_LONG, *PUSB_CFG_DESCR_LONG;
+
+typedef USB_CFG_DESCR_LONG xdata *PXUSB_CFG_DESCR_LONG;
+
+typedef struct _USB_HUB_DESCR {
+    UINT8 bDescLength;
+    UINT8 bDescriptorType;
+    UINT8 bNbrPorts;
+    UINT8 wHubCharacteristicsL;
+    UINT8 wHubCharacteristicsH;
+    UINT8 bPwrOn2PwrGood;
+    UINT8 bHubContrCurrent;
+    UINT8 DeviceRemovable;
+    UINT8 PortPwrCtrlMask;
+} USB_HUB_DESCR, *PUSB_HUB_DESCR;
+
+typedef USB_HUB_DESCR xdata *PXUSB_HUB_DESCR;
+
+typedef struct _USB_HID_DESCR {
+    UINT8 bLength;
+    UINT8 bDescriptorType;
+    UINT8 bcdHIDL;
+    UINT8 bcdHIDH;
+    UINT8 bCountryCode;
+    UINT8 bNumDescriptors;
+    UINT8 bDescriptorTypeX;
+    UINT8 wDescriptorLengthL;
+    UINT8 wDescriptorLengthH;
+} USB_HID_DESCR, *PUSB_HID_DESCR;
+
+typedef USB_HID_DESCR xdata *PXUSB_HID_DESCR;
+
+typedef struct _UDISK_BOC_CBW {         /* command of BulkOnly USB-FlashDisk */
+    UINT8 mCBW_Sig0;
+    UINT8 mCBW_Sig1;
+    UINT8 mCBW_Sig2;
+    UINT8 mCBW_Sig3;
+    UINT8 mCBW_Tag0;
+    UINT8 mCBW_Tag1;
+    UINT8 mCBW_Tag2;
+    UINT8 mCBW_Tag3;
+    UINT8 mCBW_DataLen0;
+    UINT8 mCBW_DataLen1;
+    UINT8 mCBW_DataLen2;
+    UINT8 mCBW_DataLen3;                /* uppest byte of data length, always is 0 */
+    UINT8 mCBW_Flag;                    /* transfer direction and etc. */
+    UINT8 mCBW_LUN;
+    UINT8 mCBW_CB_Len;                  /* length of command block */
+    UINT8 mCBW_CB_Buf[16];              /* command block buffer */
+} UDISK_BOC_CBW, *PUDISK_BOC_CBW;
+
+typedef UDISK_BOC_CBW xdata *PXUDISK_BOC_CBW;
+
+typedef struct _UDISK_BOC_CSW {         /* status of BulkOnly USB-FlashDisk */
+    UINT8 mCSW_Sig0;
+    UINT8 mCSW_Sig1;
+    UINT8 mCSW_Sig2;
+    UINT8 mCSW_Sig3;
+    UINT8 mCSW_Tag0;
+    UINT8 mCSW_Tag1;
+    UINT8 mCSW_Tag2;
+    UINT8 mCSW_Tag3;
+    UINT8 mCSW_Residue0;                /* return: remainder bytes */
+    UINT8 mCSW_Residue1;
+    UINT8 mCSW_Residue2;
+    UINT8 mCSW_Residue3;                /* uppest byte of remainder length, always is 0 */
+    UINT8 mCSW_Status;                  /* return: result status */
+} UDISK_BOC_CSW, *PUDISK_BOC_CSW;
+
+typedef UDISK_BOC_CSW xdata *PXUDISK_BOC_CSW;
+
+#endif
+
+#endif  // __USB_DEF__
+
+$RESTORE

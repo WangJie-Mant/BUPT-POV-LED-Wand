@@ -1,3 +1,4 @@
+#include "CH552.h"
 #include "mpu6050.h"
 #include "Public/Debug.H"
 #include "i2c.h"

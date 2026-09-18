@@ -2,10 +2,8 @@
 #define __MPU6050_H__
 
 #include "CH552.H"
-#include <cstdint>
-#include <stdint.h>
 
-typedef int16_t INT16
+//typedef int16_t INT16
 
 #define MPU6050_ADDR 0x68
 

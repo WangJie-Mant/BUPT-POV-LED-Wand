@@ -10,8 +10,8 @@
 * microcontroller manufactured by Nanjing Qinheng Microelectronics.
 ********************************************************************************/
 
-#include "..\Public\CH554.H"                                                 
-#include "..\Public\Debug.H"
+#include "Public\CH554.H"                                                 
+#include "Public\Debug.H"
 #include "PWM.H"
 #include "stdio.h"
 
@@ -35,7 +35,11 @@ void  PWMInterruptEnable()
 * Function Name  : PWMInterrupt(void)
 * Description    : PWM中断服务程序   
 *******************************************************************************/
-void	PWMInterrupt( void ) interrupt INT_NO_PWMX using 1                      //PWM1&2中断服务程序,使用寄存器组1
+#ifdef __SDCC
+void	PWMInterrupt( void ) __interrupt(INT_NO_PWMX) __using(1)
+#else
+void	PWMInterrupt( void ) interrupt INT_NO_PWMX using 1
+#endif
 {
     PWM_CTRL |= bPWM_IF_END;                                                  //清除PWM中断
     SetPWM1Dat(0x10);

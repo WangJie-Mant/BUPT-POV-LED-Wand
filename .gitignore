@@ -1,0 +1,8 @@
+.sdcc-sdk/
+build/
+Listings/
+Objects/
+
+*.uvgui.Walnut
+*.uvopt
+*.uvproj

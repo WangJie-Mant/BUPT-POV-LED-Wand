@@ -1,11 +1,12 @@
-#include "led.h"
-#include "./Public/Debug.H"
 #include "CH552.H"
-#include "Public/CH554.H"
+#include "./Public/Debug.H"
+#include "led.h"
 #include "SPI.H"
 #include "stdio.h"
 
-static LED_Color led_buffer[LED_COUNT];
+#define LED_DATA_PIN bMOSI
+
+static LED_Color xdata led_buffer[LED_COUNT];
 
 void LED_Init(void) {
 
@@ -21,9 +22,9 @@ void LED_Init(void) {
 
   // 配置寄存器对应位为0对应推挽输出，那应该是P1.5对应0，也就是0x11011111
   // bpwm1是0x20，也就是掩码为0x00100000，设置方法就是
-  P1_MOD_OC &= ~bPWM1;
+  P1_MOD_OC &= ~LED_DATA_PIN;
 
-  P1_DIR_PU |= bPWM1;
+  P1_DIR_PU |= LED_DATA_PIN;
 
   // 使用SPI输出
   // SPI初始化
@@ -50,9 +51,9 @@ void LED_Init(void) {
   //   PWM_DATA1 = 0x00;
 }
 
-static void WS2812_SendByte(unsigned char dat) {
+static void SK6812_SendByte(unsigned char dat) {
   UINT8 i;
-  UINT8 encoded;
+  UINT32 encoded;
 
   encoded = 0;
 
@@ -89,14 +90,14 @@ void LED_Update() {
   UINT8 i;
 
   for (i = 0; i < LED_COUNT; i++) {
-    // 注意WS2812的颜色顺序
-    WS2812_SendByte(led_buffer[i].g);
-    WS2812_SendByte(led_buffer[i].r);
-    WS2812_SendByte(led_buffer[i].b);
+    // 注意SK6812的颜色顺序
+    SK6812_SendByte(led_buffer[i].g);
+    SK6812_SendByte(led_buffer[i].r);
+    SK6812_SendByte(led_buffer[i].b);
   }
 
   P1_5 = 0;
-  mDelayuS(50);
+  mDelayuS(100);
 }
 
 void LED_SetAll(unsigned char r, unsigned char g, unsigned char b) {

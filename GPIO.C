@@ -11,8 +11,9 @@
 * microcontroller manufactured by Nanjing Qinheng Microelectronics.
 ********************************************************************************/
 
-#include "..\Public\CH554.H"                                                          
-#include "..\Public\Debug.H"
+#include "Public\CH554.H"  
+//#include "CH552.H"
+#include "Public\Debug.H"
 #include "GPIO.H"
 #include "stdio.h"
 
@@ -112,7 +113,11 @@ void GPIOInterruptCfg()
 * Function Name  : GPIOInterrupt(void)
 * Description    : GPIO 中断服务程序
 *******************************************************************************/
-void	GPIOInterrupt( void ) interrupt INT_NO_GPIO  using 1                      //GPIO中断服务程序,使用寄存器组1
+#ifdef __SDCC
+void	GPIOInterrupt( void ) __interrupt(INT_NO_GPIO) __using(1)
+#else
+void	GPIOInterrupt( void ) interrupt INT_NO_GPIO using 1
+#endif
 { 
 #ifdef DE_PRINTF
       printf("GPIO_STATUS: %02x\n",(UINT16)(PIN_FUNC&bIO_INT_ACT));             

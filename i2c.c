@@ -1,5 +1,6 @@
-#include "i2c.h"
 #include "CH552.H"
+#include "i2c.h"
+
 
 static void I2C_Delay(void) {
   UINT8 i;
