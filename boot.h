@@ -7,7 +7,7 @@
 #define CH551_BOOT_ADDR 0x3800
 
 /* 你的启动按钮 */
-#define BOOT_KEY P3_2
+#define BOOT_KEY P1_4
 
 /*
  * 检查上电时是否按住 Boot 按钮。

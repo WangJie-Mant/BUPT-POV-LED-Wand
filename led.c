@@ -1,8 +1,9 @@
-#include "CH552.H"
-#include "./Public/Debug.H"
 #include "led.h"
+#include "./Public/Debug.H"
+#include "CH552.H"
 #include "SPI.H"
 #include "stdio.h"
+
 
 #define LED_DATA_PIN bMOSI
 
@@ -29,6 +30,7 @@ void LED_Init(void) {
   // 使用SPI输出
   // SPI初始化
   P1_5 = 0;
+  // P1^5 和 P1_5都是输入输出寄存器的第5五位
 
   SPIMasterModeSet(3);
 
