@@ -42,16 +42,20 @@ void main(void) {
   CfgFsys();
   mDelaymS(5);
 
+  Key_Init();
+
+  // 检查烧录按键必须在key init之后
+  if (Boot_Check()) {
+    while (1) {
+      ;
+      // !unreachable()
+    }
+  }
+
   LED_Init();
   Shake_Init();
   LED_Clear();
   LED_Update();
-
-  Key_Init();
-
-  if (Boot_CheckKey()) {
-    Boot_JumpToISP();
-  }
 
   while (1) {
     switch (system_state) {
