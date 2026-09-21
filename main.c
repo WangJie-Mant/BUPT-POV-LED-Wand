@@ -1,6 +1,7 @@
 #include "main.h"
-#include "CH552.H"
 #include "./Public/Debug.H"
+#include "CH552.H"
+#include "boot.h"
 #include "font.h"
 #include "key.h"
 #include "led.h"
@@ -47,6 +48,10 @@ void main(void) {
   LED_Update();
 
   Key_Init();
+
+  if (Boot_CheckKey()) {
+    Boot_JumpToISP();
+  }
 
   while (1) {
     switch (system_state) {

@@ -4,12 +4,14 @@
 SHELL := cmd.exe
 .SHELLFLAGS := /C
 
-SDCC     := "C:/Program Files (x86)/SDCC/bin/sdcc.exe"
-PACKIHX  := "C:/Program Files (x86)/SDCC/bin/packihx.exe"
+SDCC_BIN := C:/Program Files (x86)/SDCC/bin
+SDCC     := "$(SDCC_BIN)/sdcc.exe"
+PACKIHX  := "$(SDCC_BIN)/packihx.exe"
+export PATH := $(CURDIR)/tools/sdcc;$(SDCC_BIN);$(PATH)
 BUILD    := build/sdcc
 TARGET   := $(BUILD)/pov_wand
 
-SOURCES  := font.c GPIO.C i2c.c key.c led.c main.c mpu6050.c pov.c PWM.C \
+SOURCES  := boot.c font.c GPIO.C i2c.c key.c led.c main.c mpu6050.c pov.c PWM.C \
             shake.c SPI.C Public/Debug.C sdcc_stdio.c
 OBJECTS  := $(addprefix $(BUILD)/,$(notdir $(SOURCES:.c=.rel)))
 OBJECTS  := $(OBJECTS:.C=.rel)

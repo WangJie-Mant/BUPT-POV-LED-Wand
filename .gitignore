@@ -2,6 +2,7 @@
 build/
 Listings/
 Objects/
+tools/
 
 *.uvgui.Walnut
 *.uvopt
