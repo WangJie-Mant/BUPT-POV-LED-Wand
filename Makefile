@@ -15,7 +15,7 @@ SOURCES  := boot.c font.c GPIO.C i2c.c key.c led.c main.c mpu6050.c pov.c PWM.C 
             shake.c SPI.C Public/Debug.C sdcc_stdio.c
 OBJECTS  := $(addprefix $(BUILD)/,$(notdir $(SOURCES:.c=.rel)))
 OBJECTS  := $(OBJECTS:.C=.rel)
-HEADERS  := CH552.h font.h GPIO.H i2c.h key.h led.h main.h mpu6050.h pov.h \
+HEADERS  := CH552.h font.h GPIO.H i2c.h key.h led.h main.h mpu6050.h pov.h boot.h \
             PWM.H shake.h SPI.H Public/Debug.H Public/CH554.H sdcc_compat.h
 
 # CH552 has 16 KiB code flash and 1 KiB XRAM.  sdcc_compat.h supplies the
