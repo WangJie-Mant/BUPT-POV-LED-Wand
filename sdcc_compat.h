@@ -20,6 +20,10 @@
 typedef signed short INT16;
 #endif
 
+#ifndef INT32
+typedef signed long INT32;
+#endif
+
 /* The upstream SDCC header exposes the peripheral pin aliases used by its
  * examples.  The original project also addresses the raw P1 pin bits. */
 SBIT(P1_0, 0x90, 0);

@@ -11,11 +11,12 @@ PACKIHX   := $(SDCC_HOME)/bin/packihx
 BUILD  := build/sdcc
 TARGET := $(BUILD)/pov_wand
 
-SOURCES  := boot.c font.c GPIO.C i2c.c key.c led.c main.c mpu6050.c pov.c PWM.C \
-            shake.c SPI.C timebase.c Public/Debug.C
+SOURCES  := boot.c font.c GPIO.C i2c.c key.c led.c main.c motion.c mpu6050.c \
+            pov.c PWM.C SPI.C timebase.c Public/Debug.C
 OBJECTS := $(patsubst %.c,$(BUILD)/%.rel,$(patsubst %.C,$(BUILD)/%.rel,$(SOURCES)))
-HEADERS  := CH552.H font.h GPIO.H i2c.h key.h led.h main.h mpu6050.h pov.h boot.h \
-            PWM.H shake.h SPI.H timebase.h Public/Debug.H Public/CH554.H sdcc_compat.h
+HEADERS  := CH552.H font.h GPIO.H i2c.h key.h led.h main.h motion.h mpu6050.h \
+            pov.h boot.h PWM.H SPI.H timebase.h Public/Debug.H Public/CH554.H \
+            sdcc_compat.h
 
 # CH551G exposes 10 KiB user code space and 512 bytes XRAM.  Keep the small
 # model for fast internal-RAM access, and place larger explicit buffers in xdata.

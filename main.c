@@ -5,8 +5,8 @@
 #include "font.h"
 #include "key.h"
 #include "led.h"
+#include "motion.h"
 #include "pov.h"
-#include "shake.h"
 #include "timebase.h"
 
 typedef enum { STANDBY = 0, READY } SystemState;
@@ -39,6 +39,7 @@ void System_Start(void) {
 }
 
 void main(void) {
+  UINT8 motion_trigger;
 
   CfgFsys();
   mDelaymS(5);
@@ -54,9 +55,9 @@ void main(void) {
   }
 
   LED_Init();
-  Shake_Init();
   Timebase_Init();
   POV_Init();
+  Motion_Init();
   LED_Clear();
   LED_Update();
 
@@ -69,8 +70,12 @@ void main(void) {
       break;
     case READY:
       POV_Update();
-      if (!POV_IsActive() && Shake_Detect()) {
-        POV_Start(0);
+      motion_trigger = Motion_Update();
+      if (motion_trigger) {
+        POV_SetColumnInterval(Motion_GetColumnInterval());
+        if (!POV_IsActive()) {
+          POV_Start(0);
+        }
       }
       break;
 
