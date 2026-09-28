@@ -70,7 +70,13 @@ void POV_Update(void) {
   if (pov_column < FONT_WIDTH) {
     glyph_id = Font_GetGroupGlyph(pov_group, pov_glyph);
     glyph_data = Font_GetColumnById(glyph_id, pov_column);
-    POV_ShowColumn(glyph_data, 255, 0, 0);
+    if (pov_glyph == 0) {
+      POV_ShowColumn(glyph_data, 255, 0, 0);
+    } else if (pov_glyph == 1) {
+      POV_ShowColumn(glyph_data, 0, 255, 0);
+    } else {
+      POV_ShowColumn(glyph_data, 0, 0, 255);
+    }
   } else {
     POV_ShowColumn(0, 0, 0, 0);
   }

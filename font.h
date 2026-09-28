@@ -11,7 +11,7 @@
 #define FONT_ID_BEI 1
 #define FONT_ID_JING 2
 
-#define FONT_GROUP_COUNT 1
+#define FONT_GROUP_COUNT 3
 
 extern const UINT8 code font_lao[32];
 extern const UINT8 code font_bei[32];

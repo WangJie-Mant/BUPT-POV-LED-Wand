@@ -9,9 +9,11 @@
 #include "pov.h"
 #include "timebase.h"
 
-typedef enum { STANDBY = 0, READY } SystemState;
+#define SYSTEM_STANDBY 0
+#define SYSTEM_READY 1
 
-static SystemState system_state = STANDBY;
+static UINT8 data system_state = SYSTEM_STANDBY;
+static UINT8 data selected_group;
 
 void LED_SelfTest(void) {
   UINT8 i;
@@ -35,7 +37,7 @@ void LED_SelfTest(void) {
 void System_Start(void) {
   LED_SelfTest();
 
-  system_state = READY;
+  system_state = SYSTEM_READY;
 }
 
 void main(void) {
@@ -58,29 +60,36 @@ void main(void) {
   Timebase_Init();
   POV_Init();
   Motion_Init();
+  selected_group = 0;
   LED_Clear();
   LED_Update();
 
   while (1) {
     switch (system_state) {
-    case STANDBY:
-      if (Key_IsPressed()) {
+    case SYSTEM_STANDBY:
+      if (Key_GetPress()) {
         System_Start();
       }
       break;
-    case READY:
+    case SYSTEM_READY:
       POV_Update();
+      if (Key_GetPress()) {
+        selected_group++;
+        if (selected_group >= FONT_GROUP_COUNT) {
+          selected_group = 0;
+        }
+      }
       motion_trigger = Motion_Update();
       if (motion_trigger) {
         POV_SetColumnInterval(Motion_GetColumnInterval());
         if (!POV_IsActive()) {
-          POV_Start(0);
+          POV_Start(selected_group);
         }
       }
       break;
 
     default:
-      system_state = STANDBY;
+      system_state = SYSTEM_STANDBY;
       break;
     }
   }
