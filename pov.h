@@ -3,10 +3,10 @@
 
 #include "CH552.H"
 
-void POV_ShowColumn(UINT16 column, UINT8 r, UINT8 g, UINT8 b);
-
-void POV_ShowGlyph(const UINT8 code *font, UINT8 r, UINT8 g, UINT8 b);
-
-void POV_ShowText(const UINT8 code * code text[], UINT8 length, UINT8 r, UINT8 g, UINT8 b);
+void POV_Init(void);
+void POV_Start(UINT8 group);
+void POV_Update(void);
+void POV_SetColumnInterval(UINT16 interval_us);
+UINT8 POV_IsActive(void);
 
 #endif

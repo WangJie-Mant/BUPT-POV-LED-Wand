@@ -13,7 +13,9 @@ const UINT8 code font_jing[32] = {0x00, 0x00, 0x00, 0x00, 0x08, 0x20, 0x08, 0x10
                              0x28, 0x21, 0x26, 0x3F, 0x28, 0x01, 0x28, 0x01,
                              0x28, 0x01, 0xE8, 0x05, 0x28, 0x09, 0x08, 0x30};
 
-const UINT8 code * code text[] = {font_lao, font_bei, font_jing};
+static const UINT8 code text_groups[1][3] = {
+    {FONT_ID_LAO, FONT_ID_BEI, FONT_ID_JING},
+};
 
 UINT16 Font_GetColumn(const UINT8 code *font, UINT8 column) {
   UINT16 result = 0;
@@ -29,4 +31,24 @@ UINT16 Font_GetColumn(const UINT8 code *font, UINT8 column) {
   }
 
   return result;
+}
+
+UINT16 Font_GetColumnById(UINT8 glyph_id, UINT8 column) {
+  switch (glyph_id) {
+  case FONT_ID_BEI:
+    return Font_GetColumn(font_bei, column);
+  case FONT_ID_JING:
+    return Font_GetColumn(font_jing, column);
+  case FONT_ID_LAO:
+  default:
+    return Font_GetColumn(font_lao, column);
+  }
+}
+
+UINT8 Font_GetGroupGlyph(UINT8 group, UINT8 position) {
+  if (group >= FONT_GROUP_COUNT || position >= 3) {
+    return FONT_ID_LAO;
+  }
+
+  return text_groups[group][position];
 }

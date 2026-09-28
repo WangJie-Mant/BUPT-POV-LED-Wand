@@ -7,6 +7,7 @@
 #include "led.h"
 #include "pov.h"
 #include "shake.h"
+#include "timebase.h"
 
 typedef enum { STANDBY = 0, READY } SystemState;
 
@@ -54,6 +55,8 @@ void main(void) {
 
   LED_Init();
   Shake_Init();
+  Timebase_Init();
+  POV_Init();
   LED_Clear();
   LED_Update();
 
@@ -65,8 +68,9 @@ void main(void) {
       }
       break;
     case READY:
-      if (Shake_Detect()) {
-        POV_ShowText(text, 3, 255, 0, 0);
+      POV_Update();
+      if (!POV_IsActive() && Shake_Detect()) {
+        POV_Start(0);
       }
       break;
 
