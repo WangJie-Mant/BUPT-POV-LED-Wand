@@ -10,10 +10,9 @@
 * microcontroller manufactured by Nanjing Qinheng Microelectronics.
 ********************************************************************************/
 
-#include "Public\CH554.H"                                                 
-#include "Public\Debug.H"
+#include "Public/CH554.H"
+#include "Public/Debug.H"
 #include "PWM.H"
-#include "stdio.h"
 
 #pragma  NOAREGS
 
@@ -44,7 +43,6 @@ void	PWMInterrupt( void ) interrupt INT_NO_PWMX using 1
     PWM_CTRL |= bPWM_IF_END;                                                  //清除PWM中断
     SetPWM1Dat(0x10);
     SetPWM2Dat(0x40);	
-    printf("PWM_CTRL  INT\n");                                                //开启可以用于查看是否进入中断	
+    /* Keep the ISR lightweight; serial diagnostics are intentionally omitted. */
 }
 #endif
-

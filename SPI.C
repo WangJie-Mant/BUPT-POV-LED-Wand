@@ -17,8 +17,8 @@
 ********************************************************************************/
 
 
-#include "Public\CH554.H"                                                          //调试信息打印
-#include "Public\Debug.H"
+#include "Public/CH554.H"                                                          //调试信息打印
+#include "Public/Debug.H"
 #include "SPI.H" 
 
 #pragma  NOAREGS
@@ -143,4 +143,3 @@ void	SPIInterrupt( void ) interrupt INT_NO_SPI0 using 1
 { 
 }
 #endif
-

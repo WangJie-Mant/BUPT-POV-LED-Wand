@@ -11,11 +11,10 @@
 * microcontroller manufactured by Nanjing Qinheng Microelectronics.
 ********************************************************************************/
 
-#include "Public\CH554.H"  
+#include "Public/CH554.H"
 //#include "CH552.H"
-#include "Public\Debug.H"
+#include "Public/Debug.H"
 #include "GPIO.H"
-#include "stdio.h"
 
 #pragma  NOAREGS
 
@@ -120,8 +119,7 @@ void	GPIOInterrupt( void ) interrupt INT_NO_GPIO using 1
 #endif
 { 
 #ifdef DE_PRINTF
-      printf("GPIO_STATUS: %02x\n",(UINT16)(PIN_FUNC&bIO_INT_ACT));             
+      /* Keep the ISR lightweight; serial diagnostics are intentionally omitted. */
 #endif
 }
 #endif
-

@@ -13,8 +13,8 @@
 #define xdata __xdata
 #define code  __code
 
-#include ".sdcc-sdk/include/ch554_datatypes.h"
-#include ".sdcc-sdk/include/ch554.h"
+#include <ch554_datatypes.h>
+#include <ch554.h>
 
 #ifndef INT16
 typedef signed short INT16;

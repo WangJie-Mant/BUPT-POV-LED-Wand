@@ -2,7 +2,6 @@
 #include "./Public/Debug.H"
 #include "CH552.H"
 #include "SPI.H"
-#include "stdio.h"
 
 
 #define LED_DATA_PIN bMOSI
@@ -16,10 +15,6 @@ void LED_Init(void) {
   CfgFsys();
 
   mDelaymS(5);
-
-  mInitSTDIO();
-
-  printf("start ...\n");
 
   // 配置寄存器对应位为0对应推挽输出，那应该是P1.5对应0，也就是0x11011111
   // bpwm1是0x20，也就是掩码为0x00100000，设置方法就是
