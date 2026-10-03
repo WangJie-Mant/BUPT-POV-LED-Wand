@@ -3,6 +3,7 @@ build/
 Listings/
 Objects/
 tools/
+*.code-workspace
 
 *.uvgui.Walnut
 *.uvopt
